@@ -19,11 +19,10 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: npm install @commitlint/cli @commitlint/config-conventional
+        run: |
+          npm install @commitlint/cli @commitlint/config-conventional
+          npm install timers-promises
 
       - name: Validate Commits
         run: |
-          if ! OUTPUT=$(npx commitlint --from=main --to=HEAD 2>&1); then
-            echo "Erro ao validar commits: $OUTPUT"
-            exit 1
-          fi
+          npx commitlint --from=main --to=HEAD

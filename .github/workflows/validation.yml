@@ -19,9 +19,8 @@ jobs:
           node-version: '14'
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install @commitlint/cli @commitlint/config-conventional
 
       - name: Validate Commits
         run: |
-          npm install -g @commitlint/cli @commitlint/config-conventional
           npx commitlint --from=main --to=HEAD

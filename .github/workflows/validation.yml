@@ -23,9 +23,7 @@ jobs:
 
       - name: Validate Commits
         run: |
-          OUTPUT=$(npx commitlint --from=main --to=HEAD 2>&1)
-          EXIT_CODE=$?
-          if [ $EXIT_CODE -ne 0 ]; then
+          if ! OUTPUT=$(npx commitlint --from=main --to=HEAD 2>&1); then
             echo "Erro ao validar commits: $OUTPUT"
-            exit $EXIT_CODE
+            exit 1
           fi

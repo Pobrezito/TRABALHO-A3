@@ -23,9 +23,4 @@ jobs:
 
       - name: Validate Commits
         run: |
-          try {
-            npx commitlint --from=main --to=HEAD
-          } catch (error) {
-            echo "Erro ao validar commits: $error"
-            # Você pode adicionar ações adicionais aqui, se necessário
-          }
+          npx commitlint --from=main --to=HEAD 2>/dev/null
